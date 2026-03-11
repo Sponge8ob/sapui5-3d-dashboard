@@ -1,0 +1,375 @@
+/* 
+   ========================================================================
+   SAPUI5 3D Animated Dashboard Next Level UI
+   ======================================================================== 
+*/
+
+:root {
+    --primary-glow: #00ffcc;
+    --secondary-glow: #0077ff;
+    --accent-glow: #ff007f;
+    --glass-bg: rgba(15, 23, 42, 0.65);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Background Application Overrides */
+html, body, .sapUiBody {
+    background-color: #050b14 !important;
+    color: var(--text-primary);
+    font-family: var(--font-family) !important;
+    overflow: hidden;
+}
+
+/* Base App Setup */
+.dashAppBg {
+    background: transparent !important;
+}
+
+.dashboardPage3D {
+    background: transparent !important;
+    perspective: 1200px; /* Crucial for 3D */
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+}
+.dashboardPage3D section {
+    background: transparent !important;
+}
+
+/* 3D Animated Particles / Glow Spheres */
+.background-3d {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.sphere-glow {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.4;
+    animation: drift 20s infinite alternate ease-in-out;
+}
+
+.sphere-glow-1 {
+    top: -100px;
+    left: -200px;
+    background: radial-gradient(circle, var(--primary-glow), transparent 70%);
+}
+
+.sphere-glow-2 {
+    bottom: -150px;
+    right: -100px;
+    background: radial-gradient(circle, var(--secondary-glow), transparent 70%);
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+@keyframes drift {
+    0% { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(150px, 100px, 0) scale(1.1); }
+}
+
+/* Glassmorphism Core Class */
+.glassPanel {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    border-radius: 16px;
+    color: var(--text-primary);
+}
+
+/* Header */
+.header3D {
+    padding: 24px;
+    margin: 32px 32px 16px 32px;
+    transform-style: preserve-3d;
+    transform: translateZ(50px) rotateX(2deg);
+    transition: transform 0.5s ease;
+}
+
+.header3D:hover {
+    transform: translateZ(80px) rotateX(0deg);
+}
+
+.premiumTitle span {
+    font-size: 2.2rem !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #fff 0%, var(--primary-glow) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 4px 15px rgba(0, 255, 204, 0.3);
+}
+
+.subTitle span {
+    color: var(--text-secondary) !important;
+    font-size: 1rem !important;
+    margin-top: 4px;
+}
+
+/* KPI Widgets (Grid) */
+.kpiGrid {
+    margin: 0 32px;
+    gap: 24px;
+}
+
+.kpiCard {
+    flex: 1;
+    min-width: 250px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.kpiCard::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow: inset 0 0 20px rgba(0, 255, 204, 0.0);
+    transition: 0.4s;
+}
+
+.kpiCard:hover {
+    transform: translateZ(60px) translateY(-10px) rotateY(5deg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 255, 204, 0.2);
+    border-color: rgba(0, 255, 204, 0.3);
+}
+
+.kpiCard:hover::before {
+    box-shadow: inset 0 0 20px rgba(0, 255, 204, 0.1);
+}
+
+.kpiIcon {
+    font-size: 2.5rem !important;
+    color: var(--primary-glow) !important;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6));
+}
+
+.iconActive { color: var(--secondary-glow) !important; filter: drop-shadow(0 0 8px rgba(0, 119, 255, 0.6));}
+.iconLeave { color: var(--accent-glow) !important; filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.6));}
+
+.kpiLabel span {
+    font-size: 1.1rem !important;
+    color: var(--text-secondary) !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.kpiValue span {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    margin-top: 8px;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.2);
+}
+
+/* List Container */
+.listContainer {
+    margin: 24px 32px;
+    padding: 24px;
+    transform: translateZ(30px);
+}
+
+.listTitle span {
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 12px;
+}
+
+.employeeList {
+    background: transparent !important;
+}
+
+.employeeListItem {
+    background: rgba(255,255,255,0.03) !important;
+    border-radius: 12px;
+    margin-bottom: 12px !important;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.employeeListItem:hover {
+    background: rgba(255,255,255,0.08) !important;
+    border-color: rgba(255,255,255,0.2);
+    transform: scale(1.02) translateZ(20px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.listItemContent {
+    padding: 12px;
+    width: 100%;
+}
+
+.employeeAvatar {
+    margin-right: 16px;
+    border: 2px solid var(--primary-glow);
+    box-shadow: 0 0 10px rgba(0,255,204,0.4);
+}
+
+.employeeName span {
+    font-weight: 600 !important;
+    color: #fff !important;
+}
+
+.employeeDept span {
+    color: var(--text-secondary) !important;
+    font-size: 0.9rem !important;
+}
+
+.employeeRoleBadge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(0, 255, 204, 0.1);
+    border: 1px solid var(--primary-glow);
+    color: var(--primary-glow) !important;
+    font-weight: bold;
+    text-shadow: 0 0 5px rgba(0,255,204,0.5);
+}
+
+/* Premium Buttons */
+.btnPremium3D, .btnPremiumCancel3D {
+    position: relative;
+    border-radius: 8px !important;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    transform-style: preserve-3d;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.btnPremium3D .sapMBtnInner {
+    background: linear-gradient(45deg, #00b09b, #96c93d) !important;
+    border: none !important;
+    color: #fff !important;
+    font-weight: bold !important;
+}
+
+.btnPremiumCancel3D .sapMBtnInner {
+    background: rgba(255,0,0,0.1) !important;
+    border: 1px solid rgba(255,0,0,0.5) !important;
+    color: #ff4d4d !important;
+}
+
+.btnPremium3D:hover {
+    transform: translateY(-4px) translateZ(10px);
+    box-shadow: 0 10px 25px rgba(0, 176, 155, 0.5);
+}
+
+.btnPremiumCancel3D:hover {
+    transform: translateY(-4px) translateZ(10px);
+    box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
+    background: rgba(255,0,0,0.2) !important;
+}
+
+/* Dialog / Form Overrides (CreateEmployee / ValueHelp) */
+.dialog3D {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+.dialog3D section.sapMDialogSection {
+    background: transparent !important;
+}
+
+.dialog3D header.sapMDialogTitle {
+    background: rgba(0,0,0,0.2) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+}
+
+.dialog3D .sapMTitle {
+    color: var(--primary-glow) !important;
+    font-weight: bold !important;
+    text-shadow: 0 0 10px rgba(0,255,204,0.5);
+}
+
+.form3D .sapUiFormResGrid {
+    background: transparent !important;
+}
+
+.label3D {
+    color: #e2e8f0 !important;
+    font-weight: 500 !important;
+}
+
+.input3D .sapMInputBaseInner {
+    background: rgba(0,0,0,0.3) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+    border-radius: 6px !important;
+    transition: all 0.3s ease;
+}
+
+.input3D .sapMInputBaseInner:focus {
+    border-color: var(--primary-glow) !important;
+    box-shadow: 0 0 12px rgba(0,255,204,0.4) !important;
+    transform: translateZ(5px);
+}
+
+.input3D .sapMInputBaseIcon {
+    color: var(--primary-glow) !important;
+}
+
+/* Value Help Overlay */
+.valueHelp3D .sapMList {
+    background: transparent !important;
+}
+
+.vhi3D {
+    background: rgba(255,255,255,0.02) !important;
+    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    transition: all 0.2s ease;
+}
+
+.vhi3D:hover {
+    background: rgba(255,255,255,0.1) !important;
+}
+
+.vhi3D .sapMSLIImgIcon {
+    color: #fff !important;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(40px) translateZ(0); }
+    to { opacity: 1; transform: translateY(0) translateZ(30px); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) translateZ(0px); }
+    50% { transform: translateY(-10px) translateZ(20px); }
+    100% { transform: translateY(0px) translateZ(0px); }
+}
+
+.slideUpAnim {
+    animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+}
+
+.floatAnim {
+    animation: float 6s ease-in-out infinite;
+}
+
+.floatDelay1 { animation-delay: 1s; }
+.floatDelay2 { animation-delay: 2s; }

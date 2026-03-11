@@ -1,0 +1,67 @@
+<mvc:View controllerName="sapui5project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:core="sap.ui.core" displayBlock="true">
+    <Page id="page" title="{i18n>dashboardTitle}" showHeader="false" class="dashboardPage3D">
+        <content>
+            <!-- Background Container for 3D animated particles/glow -->
+            <div xmlns="http://www.w3.org/1999/xhtml" class="background-3d">
+                <div class="sphere-glow sphere-glow-1"></div>
+                <div class="sphere-glow sphere-glow-2"></div>
+            </div>
+
+            <!-- Main Dashboard Layout -->
+            <VBox class="dashboardContainer" fitContainer="true">
+
+                <!-- Header Section inside 3D Perspective -->
+                <HBox justifyContent="SpaceBetween" alignItems="Center" class="header3D glassPanel">
+                    <VBox>
+                        <Title text="Employee Hub" class="premiumTitle" level="H1"/>
+                        <Text text="Manage and monitor your workforce" class="subTitle"/>
+                    </VBox>
+                    <Button text="{i18n>btnCreateEmployee}" icon="sap-icon://add-employee" press=".onCreateEmployee" class="btnPremium3D" />
+                </HBox>
+
+                <!-- KPI Widgets in 3D Grid Layout -->
+                <HBox class="kpiGrid" justifyContent="SpaceBetween" wrap="Wrap">
+                    <VBox class="kpiCard glassPanel floatAnim">
+                        <core:Icon src="sap-icon://employee" class="kpiIcon"/>
+                        <Text text="{i18n>statTotalEmployees}" class="kpiLabel" />
+                        <Title text="{/TotalEmployees}" class="kpiValue" />
+                    </VBox>
+                    <VBox class="kpiCard glassPanel floatAnim floatDelay1">
+                        <core:Icon src="sap-icon://sys-enter-2" class="kpiIcon iconActive"/>
+                        <Text text="{i18n>statActive}" class="kpiLabel" />
+                        <Title text="{/ActiveEmployees}" class="kpiValue" />
+                    </VBox>
+                    <VBox class="kpiCard glassPanel floatAnim floatDelay2">
+                        <core:Icon src="sap-icon://away" class="kpiIcon iconLeave"/>
+                        <Text text="{i18n>statOnLeave}" class="kpiLabel" />
+                        <Title text="{/OnLeaveEmployees}" class="kpiValue" />
+                    </VBox>
+                </HBox>
+
+                <!-- Recent Employees List Layout -->
+                <VBox class="listContainer glassPanel slideUpAnim">
+                    <Title text="Saved Employees" class="listTitle" level="H3"/>
+                    <List items="{/Employees}" backgroundDesign="Transparent" showSeparators="None" class="employeeList">
+                        <CustomListItem class="employeeListItem tiltEffect">
+                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="listItemContent">
+                                <HBox alignItems="Center">
+                                    <Avatar src="{avatar}" displaySize="S" class="employeeAvatar"/>
+                                    <VBox class="employeeDetails">
+                                        <Title text="{employeeName} ({employeeId})" class="employeeName"/>
+                                        <Text text="{department}" class="employeeDept"/>
+                                    </VBox>
+                                </HBox>
+                                <ObjectStatus text="{role}" state="Success" class="employeeRoleBadge"/>
+                            </HBox>
+                        </CustomListItem>
+                    </List>
+                </VBox>
+
+            </VBox>
+        </content>
+    </Page>
+</mvc:View>

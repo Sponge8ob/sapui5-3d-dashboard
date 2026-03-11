@@ -1,0 +1,15 @@
+{
+  "name": "sapui5project1",
+  "version": "1.0.0",
+  "description": "SAPUI5 Employee Dashboard with 3D UI",
+  "scripts": {
+    "start": "ui5 serve --config=ui5.yaml --open index.html",
+    "build": "ui5 build --clean-dest --include-task=generateManifestBundle"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@ui5/cli": "^3.0.0",
+    "ui5-task-zipper": "^0.5.0",
+    "mbt": "^1.2.18"
+  }
+}

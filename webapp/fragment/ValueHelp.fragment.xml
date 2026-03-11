@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <SelectDialog id="valueHelpDialog" title="{i18n>valueHelpTitle}" class="valueHelp3D glassPanel" search=".onValueHelpSearch" confirm=".onValueHelpClose" cancel=".onValueHelpClose" items="{path: '/Departments'}" contentWidth="50%" contentHeight="50%">
+        <!-- Hardcoding department items since we don't have a large model -->
+        <StandardListItem title="Engineering" description="Software & Hardware" icon="sap-icon://fob-watch" class="vhi3D" />
+        <StandardListItem title="Design" description="UX/UI & Creative" icon="sap-icon://palette" class="vhi3D" />
+        <StandardListItem title="Security" description="Infosec & Compliance" icon="sap-icon://locked" class="vhi3D" />
+    </SelectDialog>
+</core:FragmentDefinition>

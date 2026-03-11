@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    xmlns:f="sap.ui.layout.form">
+    <Dialog id="createEmployeeDialog" title="{i18n>createEmployeeTitle}">
+        <content>
+            <f:SimpleForm editable="true" layout="ResponsiveGridLayout" class="form3D" labelSpanL="3" labelSpanM="3" emptySpanL="4" emptySpanM="4" columnsL="1" columnsM="1">
+                <f:content>
+                    <Label text="{i18n>lblEmployeeId}" class="label3D" />
+                    <Input id="empIdInput" class="input3D" placeholder="e.g. EMP1001"/>
+
+                    <Label text="{i18n>lblEmployeeName}" class="label3D" />
+                    <Input id="empNameInput" class="input3D" placeholder="e.g. John Doe"/>
+
+                    <Label text="{i18n>lblDepartment}" class="label3D" />
+                    <Input id="deptInput" class="input3D" placeholder="Select Department" showValueHelp="true" valueHelpRequest=".onValueHelpRequest"/>
+
+                    <Label text="{i18n>lblRole}" class="label3D" />
+                    <Input id="roleInput" class="input3D" placeholder="e.g. Developer"/>
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <buttons>
+            <Button text="{i18n>btnSave}" press=".onCreateSave" type="Emphasized" class="btnPremium3D" />
+            <Button text="{i18n>btnCancel}" press=".onCreateCancel" class="btnPremiumCancel3D" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
