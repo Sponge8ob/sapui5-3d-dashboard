@@ -187,9 +187,10 @@ body,
     filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.6));
 }
 
+.kpiLabel,
 .kpiLabel span {
     font-size: 1.1rem !important;
-    color: var(--text-secondary) !important;
+    color: #d58b00 !important;
     text-transform: uppercase;
     letter-spacing: 1px;
 }

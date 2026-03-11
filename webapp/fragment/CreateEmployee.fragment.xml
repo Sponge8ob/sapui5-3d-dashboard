@@ -13,7 +13,11 @@
                     <Input id="empNameInput" class="input3D" placeholder="e.g. John Doe"/>
 
                     <Label text="{i18n>lblDepartment}" class="label3D" />
-                    <Input id="deptInput" class="input3D" placeholder="Select Department" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onValueHelpRequest"/>
+                    <ComboBox id="deptInput" class="input3D" placeholder="Select Department">
+                        <core:Item key="Engineering" text="Engineering" />
+                        <core:Item key="Design" text="Design" />
+                        <core:Item key="Security" text="Security" />
+                    </ComboBox>
                 </f:content>
             </f:SimpleForm>
         </content>

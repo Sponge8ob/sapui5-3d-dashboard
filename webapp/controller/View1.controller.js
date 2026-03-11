@@ -49,7 +49,7 @@ sap.ui.define([
         onCreateSave: function () {
             var empId = this.byId("empIdInput").getValue();
             var empName = this.byId("empNameInput").getValue();
-            var dept = this.byId("deptInput").getValue();
+            var dept = this.byId("deptInput").getSelectedKey() || this.byId("deptInput").getValue();
 
             if (!empId || !empName) {
                 MessageToast.show("Please enter Employee ID and Employee Name.");
@@ -87,42 +87,12 @@ sap.ui.define([
             // Clear form
             this.byId("empIdInput").setValue("");
             this.byId("empNameInput").setValue("");
+            this.byId("deptInput").setSelectedKey("");
             this.byId("deptInput").setValue("");
 
             MessageToast.show("Employee added successfully!");
             this.byId("createEmployeeDialog").close();
-        },
-
-        onValueHelpRequest: function (oEvent) {
-            var sInputValue = oEvent.getSource().getValue(),
-                oView = this.getView();
-
-            // create value help dialog
-            if (!this._pValueHelpDialog) {
-                this._pValueHelpDialog = Fragment.load({
-                    id: oView.getId(),
-                    name: "sapui5project1.fragment.ValueHelp",
-                    controller: this
-                }).then(function (oDialog) {
-                    oDialog.addStyleClass("dialog3D glassPanel");
-                    oView.addDependent(oDialog);
-                    return oDialog;
-                });
-            }
-            this._pValueHelpDialog.then(function (oDialog) {
-                oDialog.open(sInputValue);
-            });
-        },
-
-        onValueHelpClose: function (oEvent) {
-            var oSelectedItem = oEvent.getParameter("selectedItem");
-            if (oSelectedItem) {
-                var departmentInput = this.byId("deptInput");
-                if (departmentInput) {
-                    departmentInput.setValue(oSelectedItem.getTitle());
-                }
-            }
-            oEvent.getSource().getBinding("items").filter([]);
         }
+
     });
 });
