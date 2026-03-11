@@ -427,6 +427,13 @@ body,
 }
 
 /* Delete Button */
+.btnDelete3D {
+    position: relative;
+    z-index: 50;
+    transform: translateZ(30px);
+    pointer-events: auto !important;
+}
+
 .btnDelete3D .sapMBtnInner {
     color: #ff4d4d !important;
     background: transparent !important;
@@ -435,6 +442,6 @@ body,
 }
 
 .btnDelete3D:hover {
-    transform: scale(1.15) translateZ(5px);
+    transform: scale(1.15) translateZ(40px);
     text-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
 }
