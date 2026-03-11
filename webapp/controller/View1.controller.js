@@ -50,7 +50,6 @@ sap.ui.define([
             var empId = this.byId("empIdInput").getValue();
             var empName = this.byId("empNameInput").getValue();
             var dept = this.byId("deptInput").getValue();
-            var role = this.byId("roleInput").getValue();
 
             if (!empId || !empName) {
                 MessageToast.show("Please enter Employee ID and Employee Name.");
@@ -77,7 +76,6 @@ sap.ui.define([
                 employeeId: empId,
                 employeeName: empName,
                 department: dept,
-                role: role,
                 avatar: "sap-icon://employee"
             });
 
@@ -90,7 +88,6 @@ sap.ui.define([
             this.byId("empIdInput").setValue("");
             this.byId("empNameInput").setValue("");
             this.byId("deptInput").setValue("");
-            this.byId("roleInput").setValue("");
 
             MessageToast.show("Employee added successfully!");
             this.byId("createEmployeeDialog").close();

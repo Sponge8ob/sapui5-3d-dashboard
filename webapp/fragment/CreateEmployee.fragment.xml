@@ -13,10 +13,7 @@
                     <Input id="empNameInput" class="input3D" placeholder="e.g. John Doe"/>
 
                     <Label text="{i18n>lblDepartment}" class="label3D" />
-                    <Input id="deptInput" class="input3D" placeholder="Select Department" showValueHelp="true" valueHelpRequest=".onValueHelpRequest"/>
-
-                    <Label text="{i18n>lblRole}" class="label3D" />
-                    <Input id="roleInput" class="input3D" placeholder="e.g. Developer"/>
+                    <Input id="deptInput" class="input3D" placeholder="Select Department" showValueHelp="true" valueHelpOnly="true" valueHelpRequest=".onValueHelpRequest"/>
                 </f:content>
             </f:SimpleForm>
         </content>
