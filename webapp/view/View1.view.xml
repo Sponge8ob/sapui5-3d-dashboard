@@ -59,6 +59,9 @@
                             <Column>
                                 <Text text="Department" class="tableHeader3D"/>
                             </Column>
+                            <Column width="4em" hAlign="End">
+                                <Text text="" class="tableHeader3D"/>
+                            </Column>
                         </columns>
                         <items>
                             <ColumnListItem vAlign="Middle" class="tableRow3D tiltEffect">
@@ -70,6 +73,7 @@
                                         <Text text="{employeeName}" class="tableCell3D tableCellBold"/>
                                     </HBox>
                                     <Text text="{department}" class="tableCell3D tableCellMuted"/>
+                                    <Button icon="sap-icon://delete" press=".onDeleteEmployee" type="Transparent" class="btnDelete3D" />
                                 </cells>
                             </ColumnListItem>
                         </items>

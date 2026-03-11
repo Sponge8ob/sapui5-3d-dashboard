@@ -92,6 +92,31 @@ sap.ui.define([
 
             MessageToast.show("Employee added successfully!");
             this.byId("createEmployeeDialog").close();
+        },
+
+        onDeleteEmployee: function (oEvent) {
+            var oButton = oEvent.getSource();
+            var oContext = oButton.getBindingContext();
+            var sPath = oContext.getPath();
+            var iIndex = parseInt(sPath.split("/").pop(), 10);
+
+            var oModel = this.getView().getModel();
+            var oData = oModel.getData();
+
+            // Remove the employee from the array
+            oData.Employees.splice(iIndex, 1);
+
+            // Update total KPIs
+            oData.TotalEmployees = oData.Employees.length;
+            oData.ActiveEmployees = oData.Employees.length;
+
+            // Re-calculate the reverse chronological serial numbers
+            for (var i = 0; i < oData.Employees.length; i++) {
+                oData.Employees[i].serialNo = oData.Employees.length - i;
+            }
+
+            oModel.refresh(true);
+            MessageToast.show("Employee deleted.");
         }
 
     });
