@@ -95,28 +95,42 @@ sap.ui.define([
         },
 
         onDeleteEmployee: function (oEvent) {
-            var oButton = oEvent.getSource();
-            var oContext = oButton.getBindingContext();
-            var sPath = oContext.getPath();
-            var iIndex = parseInt(sPath.split("/").pop(), 10);
+            try {
+                var oButton = oEvent.getSource();
+                var oContext = oButton.getBindingContext();
 
-            var oModel = this.getView().getModel();
-            var oData = oModel.getData();
+                if (!oContext) {
+                    MessageToast.show("Error: No binding context found.");
+                    return;
+                }
 
-            // Remove the employee from the array
-            oData.Employees.splice(iIndex, 1);
+                var oObj = oContext.getObject();
+                var oModel = this.getView().getModel();
+                var oData = oModel.getData();
 
-            // Update total KPIs
-            oData.TotalEmployees = oData.Employees.length;
-            oData.ActiveEmployees = oData.Employees.length;
+                var iIndex = oData.Employees.indexOf(oObj);
 
-            // Re-calculate the reverse chronological serial numbers
-            for (var i = 0; i < oData.Employees.length; i++) {
-                oData.Employees[i].serialNo = oData.Employees.length - i;
+                if (iIndex !== -1) {
+                    // Remove the exact employee object from the array
+                    oData.Employees.splice(iIndex, 1);
+
+                    // Update total KPIs
+                    oData.TotalEmployees = oData.Employees.length;
+                    oData.ActiveEmployees = oData.Employees.length;
+
+                    // Re-calculate the reverse chronological serial numbers
+                    for (var i = 0; i < oData.Employees.length; i++) {
+                        oData.Employees[i].serialNo = oData.Employees.length - i;
+                    }
+
+                    oModel.refresh(true);
+                    MessageToast.show("Employee deleted successfully.");
+                } else {
+                    MessageToast.show("Error: Employee not found in data model.");
+                }
+            } catch (e) {
+                MessageToast.show("Failed to delete: " + e.message);
             }
-
-            oModel.refresh(true);
-            MessageToast.show("Employee deleted.");
         }
 
     });
