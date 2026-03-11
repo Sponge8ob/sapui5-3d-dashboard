@@ -73,6 +73,7 @@ sap.ui.define([
             var oData = oModel.getData();
 
             oData.Employees.unshift({
+                serialNo: oData.TotalEmployees + 1,
                 employeeId: empId,
                 employeeName: empName,
                 department: dept,

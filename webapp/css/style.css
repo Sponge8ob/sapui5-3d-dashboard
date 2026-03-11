@@ -17,7 +17,9 @@
 }
 
 /* Background Application Overrides */
-html, body, .sapUiBody {
+html,
+body,
+.sapUiBody {
     background-color: #050b14 !important;
     color: var(--text-primary);
     font-family: var(--font-family) !important;
@@ -31,10 +33,12 @@ html, body, .sapUiBody {
 
 .dashboardPage3D {
     background: transparent !important;
-    perspective: 1200px; /* Crucial for 3D */
+    perspective: 1200px;
+    /* Crucial for 3D */
     overflow-y: auto !important;
     overflow-x: hidden !important;
 }
+
 .dashboardPage3D section {
     background: transparent !important;
 }
@@ -76,8 +80,13 @@ html, body, .sapUiBody {
 }
 
 @keyframes drift {
-    0% { transform: translate3d(0, 0, 0) scale(1); }
-    100% { transform: translate3d(150px, 100px, 0) scale(1.1); }
+    0% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    100% {
+        transform: translate3d(150px, 100px, 0) scale(1.1);
+    }
 }
 
 /* Glassmorphism Core Class */
@@ -141,7 +150,10 @@ html, body, .sapUiBody {
 .kpiCard::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     pointer-events: none;
     border-radius: inherit;
     box-shadow: inset 0 0 20px rgba(0, 255, 204, 0.0);
@@ -165,8 +177,15 @@ html, body, .sapUiBody {
     filter: drop-shadow(0 0 8px rgba(0, 255, 204, 0.6));
 }
 
-.iconActive { color: var(--secondary-glow) !important; filter: drop-shadow(0 0 8px rgba(0, 119, 255, 0.6));}
-.iconLeave { color: var(--accent-glow) !important; filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.6));}
+.iconActive {
+    color: var(--secondary-glow) !important;
+    filter: drop-shadow(0 0 8px rgba(0, 119, 255, 0.6));
+}
+
+.iconLeave {
+    color: var(--accent-glow) !important;
+    filter: drop-shadow(0 0 8px rgba(255, 0, 127, 0.6));
+}
 
 .kpiLabel span {
     font-size: 1.1rem !important;
@@ -180,7 +199,7 @@ html, body, .sapUiBody {
     font-weight: 700 !important;
     color: #fff !important;
     margin-top: 8px;
-    text-shadow: 0 2px 10px rgba(255,255,255,0.2);
+    text-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
 }
 
 /* List Container */
@@ -199,65 +218,77 @@ html, body, .sapUiBody {
     padding-bottom: 12px;
 }
 
-.employeeList {
+/* Table Layout */
+.employeeTable3D {
     background: transparent !important;
 }
 
-.employeeListItem {
-    background: rgba(255,255,255,0.03) !important;
-    border-radius: 12px;
-    margin-bottom: 12px !important;
-    border: 1px solid transparent;
+.employeeTable3D table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    /* Adds gap between rows conceptually */
+}
+
+.employeeTable3D th {
+    background: rgba(0, 0, 0, 0.2) !important;
+    border-bottom: 1px solid var(--glass-border) !important;
+    padding: 16px 8px !important;
+}
+
+.tableHeader3D {
+    color: var(--primary-glow) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.tableRow3D {
+    background: rgba(255, 255, 255, 0.03) !important;
     transition: all 0.3s ease;
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
-.employeeListItem:hover {
-    background: rgba(255,255,255,0.08) !important;
-    border-color: rgba(255,255,255,0.2);
-    transform: scale(1.02) translateZ(20px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+.tableRow3D.sapMLIB {
+    border-bottom: none !important;
+    /* remove default ui5 borders */
 }
 
-.listItemContent {
-    padding: 12px;
-    width: 100%;
+.tableRow3D td {
+    padding: 12px 8px !important;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
 }
 
-.employeeAvatar {
-    margin-right: 16px;
-    border: 2px solid var(--primary-glow);
-    box-shadow: 0 0 10px rgba(0,255,204,0.4);
+.tableRow3D:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    transform: scale(1.01) translateZ(10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border-color: rgba(0, 255, 204, 0.3);
 }
 
-.employeeName span {
-    font-weight: 600 !important;
+.tableCell3D {
     color: #fff !important;
+    font-size: 1rem !important;
 }
 
-.employeeDept span {
+.tableCellBold {
+    font-weight: 600 !important;
+}
+
+.tableCellMuted {
     color: var(--text-secondary) !important;
-    font-size: 0.9rem !important;
-}
-
-.employeeRoleBadge {
-    padding: 4px 12px;
-    border-radius: 20px;
-    background: rgba(0, 255, 204, 0.1);
-    border: 1px solid var(--primary-glow);
-    color: var(--primary-glow) !important;
-    font-weight: bold;
-    text-shadow: 0 0 5px rgba(0,255,204,0.5);
 }
 
 /* Premium Buttons */
-.btnPremium3D, .btnPremiumCancel3D {
+.btnPremium3D,
+.btnPremiumCancel3D {
     position: relative;
     border-radius: 8px !important;
     overflow: hidden;
     transition: all 0.3s ease;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
 }
 
 .btnPremium3D .sapMBtnInner {
@@ -268,8 +299,8 @@ html, body, .sapUiBody {
 }
 
 .btnPremiumCancel3D .sapMBtnInner {
-    background: rgba(255,0,0,0.1) !important;
-    border: 1px solid rgba(255,0,0,0.5) !important;
+    background: rgba(255, 0, 0, 0.1) !important;
+    border: 1px solid rgba(255, 0, 0, 0.5) !important;
     color: #ff4d4d !important;
 }
 
@@ -281,7 +312,7 @@ html, body, .sapUiBody {
 .btnPremiumCancel3D:hover {
     transform: translateY(-4px) translateZ(10px);
     box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
-    background: rgba(255,0,0,0.2) !important;
+    background: rgba(255, 0, 0, 0.2) !important;
 }
 
 /* Dialog / Form Overrides (CreateEmployee / ValueHelp) */
@@ -295,14 +326,14 @@ html, body, .sapUiBody {
 }
 
 .dialog3D header.sapMDialogTitle {
-    background: rgba(0,0,0,0.2) !important;
+    background: rgba(0, 0, 0, 0.2) !important;
     border-bottom: 1px solid var(--glass-border) !important;
 }
 
 .dialog3D .sapMTitle {
     color: var(--primary-glow) !important;
     font-weight: bold !important;
-    text-shadow: 0 0 10px rgba(0,255,204,0.5);
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.5);
 }
 
 .form3D .sapUiFormResGrid {
@@ -315,8 +346,8 @@ html, body, .sapUiBody {
 }
 
 .input3D .sapMInputBaseInner {
-    background: rgba(0,0,0,0.3) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
+    background: rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
     color: #fff !important;
     border-radius: 6px !important;
     transition: all 0.3s ease;
@@ -324,7 +355,7 @@ html, body, .sapUiBody {
 
 .input3D .sapMInputBaseInner:focus {
     border-color: var(--primary-glow) !important;
-    box-shadow: 0 0 12px rgba(0,255,204,0.4) !important;
+    box-shadow: 0 0 12px rgba(0, 255, 204, 0.4) !important;
     transform: translateZ(5px);
 }
 
@@ -338,13 +369,13 @@ html, body, .sapUiBody {
 }
 
 .vhi3D {
-    background: rgba(255,255,255,0.02) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
     transition: all 0.2s ease;
 }
 
 .vhi3D:hover {
-    background: rgba(255,255,255,0.1) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
 }
 
 .vhi3D .sapMSLIImgIcon {
@@ -353,14 +384,29 @@ html, body, .sapUiBody {
 
 /* Animations */
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(40px) translateZ(0); }
-    to { opacity: 1; transform: translateY(0) translateZ(30px); }
+    from {
+        opacity: 0;
+        transform: translateY(40px) translateZ(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) translateZ(30px);
+    }
 }
 
 @keyframes float {
-    0% { transform: translateY(0px) translateZ(0px); }
-    50% { transform: translateY(-10px) translateZ(20px); }
-    100% { transform: translateY(0px) translateZ(0px); }
+    0% {
+        transform: translateY(0px) translateZ(0px);
+    }
+
+    50% {
+        transform: translateY(-10px) translateZ(20px);
+    }
+
+    100% {
+        transform: translateY(0px) translateZ(0px);
+    }
 }
 
 .slideUpAnim {
@@ -371,5 +417,10 @@ html, body, .sapUiBody {
     animation: float 6s ease-in-out infinite;
 }
 
-.floatDelay1 { animation-delay: 1s; }
-.floatDelay2 { animation-delay: 2s; }
+.floatDelay1 {
+    animation-delay: 1s;
+}
+
+.floatDelay2 {
+    animation-delay: 2s;
+}

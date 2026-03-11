@@ -45,20 +45,35 @@
                 <!-- Recent Employees List Layout -->
                 <VBox class="listContainer glassPanel slideUpAnim">
                     <Title text="Saved Employees" class="listTitle" level="H3"/>
-                    <List items="{/Employees}" backgroundDesign="Transparent" showSeparators="None" class="employeeList">
-                        <CustomListItem class="employeeListItem tiltEffect">
-                            <HBox justifyContent="SpaceBetween" alignItems="Center" class="listItemContent">
-                                <HBox alignItems="Center">
-                                    <Avatar src="{avatar}" displaySize="S" class="employeeAvatar"/>
-                                    <VBox class="employeeDetails">
-                                        <Title text="{employeeName} ({employeeId})" class="employeeName"/>
-                                        <Text text="{department}" class="employeeDept"/>
-                                    </VBox>
-                                </HBox>
-                                <ObjectStatus text="{role}" state="Success" class="employeeRoleBadge"/>
-                            </HBox>
-                        </CustomListItem>
-                    </List>
+                    <Table items="{/Employees}" backgroundDesign="Transparent" class="employeeTable3D">
+                        <columns>
+                            <Column width="5em" hAlign="Center">
+                                <Text text="S.No." class="tableHeader3D"/>
+                            </Column>
+                            <Column>
+                                <Text text="Employee ID" class="tableHeader3D"/>
+                            </Column>
+                            <Column>
+                                <Text text="Name" class="tableHeader3D"/>
+                            </Column>
+                            <Column>
+                                <Text text="Department" class="tableHeader3D"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem vAlign="Middle" class="tableRow3D tiltEffect">
+                                <cells>
+                                    <Text text="{serialNo}" class="tableCell3D tableCellBold"/>
+                                    <Text text="{employeeId}" class="tableCell3D"/>
+                                    <HBox alignItems="Center">
+                                        <Avatar src="{avatar}" displaySize="XS" class="sapUiTinyMarginEnd" style="border: 2px solid var(--primary-glow);"/>
+                                        <Text text="{employeeName}" class="tableCell3D tableCellBold"/>
+                                    </HBox>
+                                    <Text text="{department}" class="tableCell3D tableCellMuted"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
                 </VBox>
 
             </VBox>
